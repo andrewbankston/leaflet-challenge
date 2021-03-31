@@ -100,7 +100,7 @@ var legend = L.control({
 });
 
 legend.onAdd = function() {
-    var div = L.DomUtil.create("div", "info legend");
+    var div = L.DomUtil.create("div", "legend");
 
     const depths = ["-10-10", "10-30", "30-50", "50-70", "70-90", "90+"];
     const colors = ["#7fff00", "#ffff48", "#f5c300", "#ff8C00", "#be8C00", "#dd2713"];
@@ -108,7 +108,7 @@ legend.onAdd = function() {
     for (var i=0; i < depths.length; i++) {
         console.log(colors[i]);
         div.innerHTML +=
-            "<i style='background-color: " + colors[i] + "'></i> " + depths[i] + "<br>";
+            "<li style='background-color: " + colors[i] + "'>" + depths[i] + "</li><br>";
     }
     return div;
 };
