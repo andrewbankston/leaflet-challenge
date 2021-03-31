@@ -58,17 +58,17 @@ d3.json(queryUrl, function(data) {
 
     function getColor(depth) {
         if (depth < 10) {
-            return color = "#7fff00";
+            return color = "#98ee00";
         } else if (depth < 30) {
-            return color = "#ffff48";
+            return color = "#d4ee00";
         } else if (depth < 50) {
-            return color = "#f5c300";
+            return color = "#eecc00";
         } else if (depth < 70) {
-            return color = "#ff8c00";
+            return color = "#ee9c00";
         } else if (depth < 90) {
-            return color = "#be8c00";
+            return color = "#ea822c";
         } else {
-            return color = "#dd2713";
+            return color = "#ea2c2c";
         }
     }
 
@@ -102,13 +102,15 @@ var legend = L.control({
 legend.onAdd = function() {
     var div = L.DomUtil.create("div", "legend");
 
-    const depths = ["-10-10", "10-30", "30-50", "50-70", "70-90", "90+"];
-    const colors = ["#7fff00", "#ffff48", "#f5c300", "#ff8C00", "#be8C00", "#dd2713"];
+    const depths = [-10, 10, 30, 50, 70, 90];
+    const colors = ["#98ee00", "#d4ee00", "#eecc00", "#ee9c00", "#ea822c", "#ea2c2c"];
+
+    div.innerHTML = "<p>Depth in km</p>"
 
     for (var i=0; i < depths.length; i++) {
         console.log(colors[i]);
         div.innerHTML +=
-            "<li style='background-color: " + colors[i] + "'>" + depths[i] + "</li><br>";
+            "<i style='background: " + colors[i] + "'></i> " + depths[i] + (depths[i + 1] ? "&ndash;" + depths[i + 1] + "<br>" : "+");
     }
     return div;
 };
